@@ -1,0 +1,6 @@
+out/
+.gradle/
+workspace.xml
+tasks.xml
+uiDesigner.xml
+libraries/
