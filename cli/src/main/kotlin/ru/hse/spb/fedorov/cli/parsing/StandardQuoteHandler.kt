@@ -1,7 +1,7 @@
 package ru.hse.spb.fedorov.cli.parsing
 
 object StandardQuoteHandler : QuoteHandler {
-    private val weakQuotes = setOf('\"')
+    private val weakQuotes = setOf('"')
     private val strongQuotes = setOf('\'')
     private var topQuote: Char? = null
 

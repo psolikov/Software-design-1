@@ -8,7 +8,6 @@ import org.junit.runners.MethodSorters
 import ru.hse.spb.fedorov.cli.environment.Environment
 import ru.hse.spb.fedorov.cli.environment.StandardEnvironmentFactory
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class ParserTest {
     private lateinit var parser: Parser
     private lateinit var environment: Environment
