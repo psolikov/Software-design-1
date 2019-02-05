@@ -26,9 +26,7 @@ class GeneralParser(val substitutor: Substitutor, val tokenizer: Tokenizer) : Pa
                 commandArguments.removeAt(0)
                 commandArguments.add(0, "=")
                 commandArguments.add(1, assignmentParts[0])
-
-                if (assignmentParts.size == 2)
-                    commandArguments.add(2, assignmentParts[1])
+                commandArguments.add(2, if (assignmentParts.size == 2) assignmentParts[1] else "")
 
                 resultCommands.add(CommandArguments(commandArguments))
             } else {

@@ -5,17 +5,20 @@ import java.nio.file.Paths
 
 object WcCommand : GeneralCommand() {
     override fun execute(args: List<String>, input: String): CommandResult {
-        if (args.isEmpty()) return CommandResult(calculateStatistics(input))
+        if (args.isEmpty()) return CommandResult(calculateStatisticsFromText(input))
 
-        return CommandResult(args.joinToString("\n") { calculateStatistics(it) })
+        return CommandResult(args.joinToString("\n") { calculateStatisticsFromFile(it) })
     }
 
-    private fun calculateStatistics(fileName: String): String {
+    private fun calculateStatisticsFromFile(fileName: String): String {
         val bytes = Paths.get(fileName).toFile().readBytes()
         val text = bytes.toString(Charset.defaultCharset())
 
-        val wordsNumber = text.split("\\s".toRegex()).filter { it.isNotEmpty() }.size
+        return calculateStatisticsFromText(text)
+    }
 
-        return "${1 + text.count({ it == '\n' })} ${wordsNumber} ${bytes.size}"
+    private fun calculateStatisticsFromText(text: String): String {
+        val wordsNumber = text.split("\\s".toRegex()).filter { it.isNotEmpty() }.size
+        return "${1 + text.count({ it == '\n' })} ${wordsNumber} ${text.length}"
     }
 }
