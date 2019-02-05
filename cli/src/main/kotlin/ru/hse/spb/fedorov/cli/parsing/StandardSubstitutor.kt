@@ -2,7 +2,13 @@ package ru.hse.spb.fedorov.cli.parsing
 
 import ru.hse.spb.fedorov.cli.environment.Environment
 
+/**
+ * An implementation of a substitutor for the command shell
+ */
 class StandardSubstitutor(val environment: Environment) : Substitutor {
+    /**
+     * Substitute values of variables defined by $ into a string that are not into string quotes.
+     */
     override fun substitute(input: String): String {
         val quoteHandler = StandardQuoteHandler
         val variableNameBuilder = StringBuilder()

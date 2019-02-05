@@ -8,10 +8,17 @@ import ru.hse.spb.fedorov.cli.parsing.StandardParserFactory
 import java.io.IOException
 import java.nio.file.InvalidPathException
 
+
+/**
+ * A CommandLine Interface for Environment
+ */
 class CommandLineInterface(val environment: Environment) {
     val parser = StandardParserFactory.createParser(environment)
     val executor = StandardCommandExecutor(environment)
 
+    /**
+     * Runs command line interactions with Environment
+     */
     fun run() {
         while (true) {
             val command = readLine() ?: break

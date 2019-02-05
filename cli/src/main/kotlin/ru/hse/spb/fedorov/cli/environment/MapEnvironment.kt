@@ -11,22 +11,37 @@ import java.nio.file.InvalidPathException
 import java.nio.file.Paths
 import java.nio.file.Path
 
+/**
+ * An implementation of Environment.
+ */
 class MapEnvironment : Environment {
     private val variables: MutableMap<String, String> = mutableMapOf()
     private val commands: MutableMap<String, Command> = mutableMapOf()
 
+    /**
+     * @inheritDoc
+     */
     override fun setCommand(name: String, command: Command) {
         commands[name] = command
     }
 
+    /**
+     * @inheritDoc
+     */
     override fun executeCommand(name: String, args: List<String>, input: String): CommandResult {
         return commands[name]?.executeWithEnvironment(args, input, this) ?: executeNonDefinedCommand(name, args, input)
     }
 
+    /**
+     * @inheritDoc
+     */
     override fun setVariable(name: String, value: String) {
         variables[name] = value
     }
 
+    /**
+     * @inheritDoc
+     */
     override fun getVariable(name: String): String = variables.getOrDefault(name, "")
 
     private fun executeNonDefinedCommand(name: String, args: List<String>, input: String): CommandResult {

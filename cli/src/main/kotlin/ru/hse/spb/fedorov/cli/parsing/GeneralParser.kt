@@ -1,6 +1,12 @@
 package ru.hse.spb.fedorov.cli.parsing
 
+/**
+ * An implementation of Parser
+ */
 class GeneralParser(val substitutor: Substitutor, val tokenizer: Tokenizer) : Parser {
+    /**
+     * @inheritDoc
+     */
     override fun parse(input: String): List<CommandArguments> {
         val text = substitutor.substitute(input)
         val tokens = tokenizer.tokenize(text)

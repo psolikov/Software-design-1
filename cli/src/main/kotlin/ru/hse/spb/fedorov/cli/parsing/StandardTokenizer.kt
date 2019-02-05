@@ -3,9 +3,15 @@ package ru.hse.spb.fedorov.cli.parsing
 import ru.hse.spb.fedorov.cli.exception.ParserException
 import java.lang.StringBuilder
 
+/**
+ * A tokenizer for the command shell
+ */
 object StandardTokenizer : Tokenizer {
     val SPACE_CHARACTERS = setOf(' ', '\t', '\n')
 
+    /**
+     * Splits a string with spaces, pipes taking quotes into consideration
+     */
     override fun tokenize(input: String): List<String> {
         val tokenBuilder = StringBuilder()
         val quoteHandler = StandardQuoteHandler
