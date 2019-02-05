@@ -10,7 +10,7 @@ class StandardSubstitutor(val environment: Environment) : Substitutor {
      * Substitute values of variables defined by $ into a string that are not into string quotes.
      */
     override fun substitute(input: String): String {
-        val quoteHandler = StandardQuoteHandler
+        val quoteHandler = StandardQuoteHandler()
         val variableNameBuilder = StringBuilder()
         val resultBuilder = StringBuilder()
         var isVariableName = false

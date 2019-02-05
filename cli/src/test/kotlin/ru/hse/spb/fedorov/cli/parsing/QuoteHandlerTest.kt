@@ -9,7 +9,7 @@ class QuoteHandlerTest {
 
     @Before
     fun setUp() {
-        quoteHandler = StandardQuoteHandler
+        quoteHandler = StandardQuoteHandler()
     }
 
     @Test

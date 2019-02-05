@@ -14,7 +14,7 @@ object StandardTokenizer : Tokenizer {
      */
     override fun tokenize(input: String): List<String> {
         val tokenBuilder = StringBuilder()
-        val quoteHandler = StandardQuoteHandler
+        val quoteHandler = StandardQuoteHandler()
         val tokens: MutableList<String> = mutableListOf()
 
         for (c in input) {
