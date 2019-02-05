@@ -17,7 +17,7 @@ class ExecutorTest {
     fun testCommandChain() {
         val environment = StandardEnvironmentFactory.createEnvironment()
         val executor = StandardCommandExecutor(environment)
-        assertEquals("", executor.execute(listOf(
+        assertEquals("1 4 19", executor.execute(listOf(
             CommandArguments(listOf("echo", "welcome", "to", "our", "land")),
             CommandArguments(listOf("wc"))
         )))

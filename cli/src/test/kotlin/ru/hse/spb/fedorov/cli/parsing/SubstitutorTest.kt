@@ -3,9 +3,12 @@ package ru.hse.spb.fedorov.cli.parsing
 import org.junit.Test
 import org.junit.Assert.*
 import org.junit.Before
+import org.junit.FixMethodOrder
+import org.junit.runners.MethodSorters
 import ru.hse.spb.fedorov.cli.environment.Environment
 import ru.hse.spb.fedorov.cli.environment.MapEnvironment
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class SubstitutorTest {
     private lateinit var environment: Environment
     private lateinit var substitutor: Substitutor
