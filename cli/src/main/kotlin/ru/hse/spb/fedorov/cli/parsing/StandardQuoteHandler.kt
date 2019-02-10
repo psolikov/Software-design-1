@@ -12,10 +12,10 @@ class StandardQuoteHandler : QuoteHandler {
     override fun addSymbol(c: Char) {
         if (inQuotes()) {
             if (topQuote == c)
-                topQuote = null
+                topQuote = null // the quote is paired with another
         } else {
             if (isQuote(c))
-                topQuote = c
+                topQuote = c // update current paired quote
         }
     }
 

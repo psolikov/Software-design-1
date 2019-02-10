@@ -12,7 +12,7 @@ import java.nio.file.Paths
 import java.nio.file.Path
 
 /**
- * An implementation of Environment.
+ * An implementation of Environment using standart map.
  */
 class MapEnvironment : Environment {
     private val variables: MutableMap<String, String> = mutableMapOf()

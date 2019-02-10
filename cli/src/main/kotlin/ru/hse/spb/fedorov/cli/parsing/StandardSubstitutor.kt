@@ -22,7 +22,7 @@ class StandardSubstitutor(val environment: Environment) : Substitutor {
                 if (!c.isLetterOrDigit()) {
                     isVariableName = false
                     substituteVariable(resultBuilder, variableNameBuilder)
-                } else {
+                } else { // name can consist only of letters and digits
                     variableNameBuilder.append(c)
                 }
             }
@@ -34,7 +34,7 @@ class StandardSubstitutor(val environment: Environment) : Substitutor {
                 resultBuilder.append(c)
         }
 
-        if (isVariableName)
+        if (isVariableName) // the last variable name in not ended
             substituteVariable(resultBuilder, variableNameBuilder)
 
         return resultBuilder.toString()

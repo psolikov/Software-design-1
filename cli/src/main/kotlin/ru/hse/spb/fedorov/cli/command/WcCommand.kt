@@ -4,6 +4,10 @@ import java.nio.charset.Charset
 import java.nio.file.Paths
 
 object WcCommand : GeneralCommand() {
+    /**
+     * Calculates number of lines, words and bytes in input (if there are no arguments) or in
+     * files denoted by arguments. Format: "$lines $words $bytes"
+     */
     override fun execute(args: List<String>, input: String): CommandResult {
         if (args.isEmpty()) return CommandResult(calculateStatisticsFromText(input))
 

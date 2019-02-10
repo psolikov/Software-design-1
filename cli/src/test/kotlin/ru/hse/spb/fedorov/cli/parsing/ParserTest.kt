@@ -7,6 +7,7 @@ import org.junit.FixMethodOrder
 import org.junit.runners.MethodSorters
 import ru.hse.spb.fedorov.cli.environment.Environment
 import ru.hse.spb.fedorov.cli.environment.StandardEnvironmentFactory
+import ru.hse.spb.fedorov.cli.exception.ParserException
 
 class ParserTest {
     private lateinit var parser: Parser
@@ -35,5 +36,15 @@ class ParserTest {
     @Test
     fun testPipe() {
         assertEquals(listOf(CommandArguments(listOf("echo")), CommandArguments(listOf("echo"))), parser.parse("echo| echo"))
+    }
+
+    @Test(expected = ParserException::class)
+    fun testStrongQuoteParserException() {
+        parser.parse("\'dsf")
+    }
+
+    @Test(expected = ParserException::class)
+    fun testWeakQuoteParserException() {
+        parser.parse("dsf\"")
     }
 }

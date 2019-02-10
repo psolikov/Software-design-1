@@ -3,6 +3,9 @@ package ru.hse.spb.fedorov.cli.environment
 import ru.hse.spb.fedorov.cli.command.*
 import java.nio.file.Paths
 
+/**
+ * Factory for the creation of environment with all standard operations.
+ */
 object StandardEnvironmentFactory : EnvironmentFactory {
     override fun createEnvironment(): Environment {
         val environment = MapEnvironment()
