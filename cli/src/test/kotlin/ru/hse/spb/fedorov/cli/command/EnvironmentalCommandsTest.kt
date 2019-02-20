@@ -2,6 +2,7 @@ package ru.hse.spb.fedorov.cli.command
 
 import org.junit.Test
 import org.junit.Assert.*
+import ru.hse.spb.fedorov.cli.environment.Environment
 import ru.hse.spb.fedorov.cli.environment.MapEnvironment
 import ru.hse.spb.fedorov.cli.environment.StandardEnvironmentFactory
 import ru.hse.spb.fedorov.cli.exception.CommandShellException
@@ -36,12 +37,22 @@ class EnvironmentalCommandsTest {
     }
 
     @Test
-    fun testLsCommLSand() {
-        val environment = MapEnvironment()
-        val ls = LsCommand.execute(listOf(), "", environment).output
-        print(ls)
-//        assertEquals(
-//            ls, "build.gradle  gradle.properties  gradlew.bat  settings.gradle  gradle  gradlew  out  src"
-//        )
+    fun testLsCommand() {
+        val environment = StandardEnvironmentFactory.createEnvironment()
+        val ls = LsCommand.execute(listOf(Paths.get(".").toAbsolutePath().toString()), "", environment).output
+        println(Paths.get(".").toAbsolutePath())
+        println(ls)
+        assertEquals(
+            ls,
+            "out  gradle  gradlew  build.gradle  .gradle  gradle.properties  gradlew.bat  settings.gradle  .idea  src  "
+        )
+
+    }
+
+    @Test
+    fun testCdCommand() {
+        val environment = StandardEnvironmentFactory.createEnvironment()
+        val cd = CdCommand.execute(listOf("/"), "", environment).output
+        assertEquals("/", environment.getVariable(Environment.CURRENT_DIRECTORY_PATH))
     }
 }

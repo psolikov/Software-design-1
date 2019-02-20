@@ -16,7 +16,7 @@ object CdCommand : EnvironmentalCommand() {
             return CommandResult("Too many arguments")
         }
 
-        if (Paths.get(environment.getVariable(Environment.CURRENT_DIRECTORY_PATH) + "/" + args[0]).toFile().isDirectory) {
+        if (!args[0].startsWith("/") && Paths.get(environment.getVariable(Environment.CURRENT_DIRECTORY_PATH) + "/" + args[0]).toFile().isDirectory) {
             environment.setVariable(
                 Environment.CURRENT_DIRECTORY_PATH,
                 environment.getVariable(Environment.CURRENT_DIRECTORY_PATH) + "/" + args[0]
