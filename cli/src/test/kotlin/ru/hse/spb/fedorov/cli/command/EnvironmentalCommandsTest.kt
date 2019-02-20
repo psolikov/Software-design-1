@@ -31,6 +31,17 @@ class EnvironmentalCommandsTest {
     fun testPwdCommand() {
         val environment = StandardEnvironmentFactory.createEnvironment()
         val pwd = PwdCommand.execute(listOf(), "", environment).output
+        print(pwd)
         assertEquals(Paths.get(".").toAbsolutePath(), Paths.get(pwd + "/.").toAbsolutePath())
+    }
+
+    @Test
+    fun testLsCommLSand() {
+        val environment = MapEnvironment()
+        val ls = LsCommand.execute(listOf(), "", environment).output
+        print(ls)
+//        assertEquals(
+//            ls, "build.gradle  gradle.properties  gradlew.bat  settings.gradle  gradle  gradlew  out  src"
+//        )
     }
 }
